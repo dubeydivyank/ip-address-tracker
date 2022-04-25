@@ -8,7 +8,7 @@ const address = document.querySelector("#location");
 const timezone = document.querySelector("#timezone");
 const isp = document.querySelector("#isp");
 
-let map = L.map("map").setView([51.505, -0.09], 13);
+let map = L.map("map", { zoomControl: false });
 let icon = L.icon({
   iconUrl: "./images/icon-location.svg",
 
@@ -33,27 +33,50 @@ L.tileLayer(
   }
 ).addTo(map);
 
+window.addEventListener("load", () => {
+  fetch("https://geo.ipify.org/api/v1?apiKey=at_iNxW19FkpU4or6bkRwz8J4PkUmIjG")
+    .then((response) => response.json())
+    .then((details) => {
+      updateDetails(details);
+
+      const lat = details.location.lat;
+      const lng = details.location.lng;
+      updateMap(lat, lng);
+      // map.setView([lat, lng], 13);
+      // L.marker([lat, lng], { icon: icon }).addTo(map);
+    });
+});
+
 button.addEventListener("click", () => {
   const userInput = input.value;
-  const getIPDetails = `https://geo.ipify.org/api/v2/country,city?apiKey=at_JonIcgFaDGUQS7HPF6DcvJM3Bg3RK&ipAddress=${userInput}&domain=${userInput}`;
+  const getIPDetails = `https://geo.ipify.org/api/v1/?apiKey=at_JonIcgFaDGUQS7HPF6DcvJM3Bg3RK&ipAddress=${userInput}&domain=${userInput}`;
 
   (async function getIpDetails() {
-    const response = await fetch(getIPDetails);
-    const details = await response.json();
+    try {
+      const response = await fetch(getIPDetails);
+      const details = await response.json();
+      updateDetails(details);
+      const lat = details.location.lat;
+      const lng = details.location.lng;
+      updateMap(lat, lng);
+    } catch (e) {
+      alert("invalid domain/ip address");
+      console.log(e);
+    }
 
-    updateDetails(details);
-
-    const lat = details.location.lat;
-    const lng = details.location.lng;
-
-    map.setView([lat, lng], 13);
-    L.marker([lat, lng], { icon: icon }).addTo(map);
+    // map.setView([lat, lng], 13);
+    // L.marker([lat, lng], { icon: icon }).addTo(map);
   })();
 });
 
 function updateDetails(details) {
   ipAddress.textContent = details.ip;
   address.textContent = `${details.location.city}, ${details.location.region}, ${details.location.country} ${details.location.postalCode}`;
-  timezone.textContent = details.location.timezone;
+  timezone.textContent = "UTC" + details.location.timezone;
   isp.textContent = details.isp;
+}
+
+function updateMap(lat, lng) {
+  map.setView([lat, lng], 13);
+  L.marker([lat, lng], { icon: icon }).addTo(map);
 }
