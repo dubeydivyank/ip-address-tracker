@@ -2,21 +2,18 @@
 // https://geo.ipify.org/
 
 const button = document.querySelector(".input-button");
+const form = document.querySelector(".form");
 const input = document.querySelector(".input-text");
 const ipAddress = document.querySelector("#ipAddress");
 const address = document.querySelector("#location");
 const timezone = document.querySelector("#timezone");
 const isp = document.querySelector("#isp");
 
-let map = L.map("map", { zoomControl: false });
+let map = L.map("map", { zoomControl: false }).setView([51.505, -0.09], 13);
 let icon = L.icon({
   iconUrl: "./images/icon-location.svg",
-
   iconSize: [46, 55], // size of the icon
-  // shadowSize:   [50, 64], // size of the shadow
-  iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
-  // shadowAnchor: [4, 62],  // the same for the shadow
-  // popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+  iconAnchor: [0, 0], // point of the icon which will correspond to marker's location
 });
 
 L.tileLayer(
@@ -47,7 +44,8 @@ window.addEventListener("load", () => {
     });
 });
 
-button.addEventListener("click", () => {
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
   const userInput = input.value;
   const getIPDetails = `https://geo.ipify.org/api/v1/?apiKey=at_JonIcgFaDGUQS7HPF6DcvJM3Bg3RK&ipAddress=${userInput}&domain=${userInput}`;
 
@@ -71,12 +69,12 @@ button.addEventListener("click", () => {
 
 function updateDetails(details) {
   ipAddress.textContent = details.ip;
-  address.textContent = `${details.location.city}, ${details.location.region}, ${details.location.country} ${details.location.postalCode}`;
+  address.textContent = `${details.location.city}, ${details.location.country} ${details.location.postalCode}`;
   timezone.textContent = "UTC" + details.location.timezone;
   isp.textContent = details.isp;
 }
 
 function updateMap(lat, lng) {
-  map.setView([lat, lng], 13);
+  map.setView([lat, lng], 15);
   L.marker([lat, lng], { icon: icon }).addTo(map);
 }

@@ -32,25 +32,138 @@ select {
 
 body {
   font-family: var(--ff-rubik);
-  background-image: var(--bg-image);
-  /* background-size: cover; */
+  font-size: 18px;
+  height: 100%;
+}
+button {
+  cursor: pointer;
+}
+header {
+  height: 270px;
+  position: relative;
+  background-size: cover;
   background-repeat: no-repeat;
+  background-image: var(--bg-image);
 }
 
-header {
-  max-height: 400px;
+.heading {
+  padding-top: 22px;
+  padding-bottom: 22px;
+  color: aliceblue;
+  font-weight: 500;
+  font-size: 25px;
 }
-#map {
-  height: 300px;
-  width: 100%;
-  /* position: fixed; */
-  bottom: 0;
+
+.form {
+  display: flex;
+  max-width: 555px;
+}
+.input-text {
+  height: 58px;
+  width: 269px;
+  outline: none;
+  border: hidden;
+  padding-left: 20px;
+  font-weight: 400;
+  color: var(--clr-dark-grey);
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+::placeholder {
+  /* padding-left: 20px; */
+  font-size: 15px;
+  color: var(--clr-grey);
+  opacity: 0.7;
+}
+
+.input-button {
+  width: 58px;
+  height: 58px;
+  background-color: black;
+  border: hidden;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .IP-info-container {
+  margin-top: 18px;
+  min-width: 327px;
   height: 400px;
-  width: 400px;
-  background-color: green;
+  padding-top: 28px;
+  background-color: white;
+  border-radius: 12px;
+  z-index: 2;
+}
+
+#map {
+  min-height: 600px;
+  /* width: 100%; */
+  top: 270px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  bottom: 0;
   z-index: 1;
 }
+
+.info-title {
+  color: var(--clr-grey);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-align: center;
+  /* padding-bottom: 15px; */
+}
+
+.info-value {
+  color: var(--clr-dark-grey);
+  font-weight: 500;
+  font-size: 18px;
+  padding-bottom: 25px;
+  text-align: center;
+  padding-top: 8px;
+}
 /* --------------------------------- */
+@media screen and (min-width: 767px) {
+  .IP-info-container {
+    margin-top: 25px;
+    display: flex;
+    padding: 30px;
+    align-items: center;
+    justify-content: space-around;
+    max-width: 1110px;
+    width: 70%;
+    max-height: 161px;
+  }
+  .heading {
+    padding: 36px;
+    font-size: 28px;
+  }
+
+  .form {
+    width: 60%;
+  }
+
+  .input-text {
+    max-width: 497px;
+    width: 100%;
+  }
+  header {
+    height: 250px;
+  }
+  #map {
+    top: 250px;
+    min-height: 300px;
+  }
+
+  .info-title {
+    text-align: left;
+  }
+
+  .info-value {
+    text-align: left;
+    padding-right: 10px;
+  }
+}

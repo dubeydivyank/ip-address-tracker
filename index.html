@@ -28,34 +28,40 @@
     <title>IP Address Tracker</title>
   </head>
   <body>
-    <div class="container flex-column">
-      <header class="flex-column">
-        <div>IP Address Tracker</div>
-        <form class="form">
-          <input class="input-text" type="text" />
-          <button class="input-button" type="button">></button>
-        </form>
-        <div class="IP-info-container flex-column">
-          <div class="flex-column">
-            <h5 class="info-title">IP ADDRESS</h5>
-            <div class="info-value" id="ipAddress">192321231743101</div>
-          </div>
-          <div class="flex-column">
-            <h5 class="info-title">LOCATION</h5>
-            <div class="info-value" id="location">Brooklyn, NY 10001</div>
-          </div>
-          <div class="flex-column">
-            <h5 class="info-title">TIMEZONE</h5>
-            <div class="info-value" id="timezone">UTC-05:00</div>
-          </div>
-          <div class="flex-column">
-            <h5 class="info-title">ISP</h5>
-            <div class="info-value" id="isp">SpaceX Starlink</div>
-          </div>
+    <!-- <div class="container flex-column"> -->
+    <header class="flex-column">
+      <div class="heading">IP Address Tracker</div>
+      <form class="form">
+        <input
+          class="input-text"
+          type="text"
+          placeholder="Search for any IP address or domain"
+        />
+        <button class="input-button" type="submit">
+          <img src="./images/icon-arrow.svg" alt=">" />
+        </button>
+      </form>
+      <div class="IP-info-container">
+        <div class="info">
+          <h5 class="info-title">IP ADDRESS</h5>
+          <div class="info-value" id="ipAddress">192321231743101</div>
         </div>
-      </header>
-      <div id="map"></div>
-    </div>
+        <div class="info">
+          <h5 class="info-title">LOCATION</h5>
+          <div class="info-value" id="location">Brooklyn, NY 10001</div>
+        </div>
+        <div class="info">
+          <h5 class="info-title">TIMEZONE</h5>
+          <div class="info-value" id="timezone">UTC-05:00</div>
+        </div>
+        <div class="info">
+          <h5 class="info-title">ISP</h5>
+          <div class="info-value" id="isp">SpaceX Starlink</div>
+        </div>
+      </div>
+    </header>
+    <div id="map"></div>
+    <!-- </div> -->
   </body>
   <script src="./script.js"></script>
 </html>
