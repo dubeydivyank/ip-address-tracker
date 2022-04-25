@@ -3,12 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="./styles.css" />
+    <!-- Leaflet JS (MAP) stylesheet -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
       integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
       crossorigin=""
     />
+    <!-- Leaflet Js -->
     <script
       src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
       integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
@@ -17,34 +28,34 @@
     <title>IP Address Tracker</title>
   </head>
   <body>
-    <div class="container">
-      <header>
-        <h2>IP Address Tracker</h2>
-        <form>
-          <input type="text" />
-          <button type="submit">></button>
+    <div class="container flex-column">
+      <header class="flex-column">
+        <div>IP Address Tracker</div>
+        <form class="form">
+          <input class="input-text" type="text" />
+          <button class="input-button" type="button">></button>
         </form>
+        <div class="IP-info-container flex-column">
+          <div class="flex-column">
+            <h5 class="info-title">IP ADDRESS</h5>
+            <div class="info-value" id="ipAddress">192321231743101</div>
+          </div>
+          <div class="flex-column">
+            <h5 class="info-title">LOCATION</h5>
+            <div class="info-value" id="location">Brooklyn, NY 10001</div>
+          </div>
+          <div class="flex-column">
+            <h5 class="info-title">TIMEZONE</h5>
+            <div class="info-value" id="timezone">UTC-05:00</div>
+          </div>
+          <div class="flex-column">
+            <h5 class="info-title">ISP</h5>
+            <div class="info-value" id="isp">SpaceX Starlink</div>
+          </div>
+        </div>
       </header>
-      <div class="IP-info-container">
-        <div>
-          <h5>IP ADDRESS</h5>
-          <div>192321231743101</div>
-        </div>
-        <div>
-          <h5>LOCATION</h5>
-          <div>Brooklyn, NY 10001</div>
-        </div>
-        <div>
-          <h5>TIMEZONE</h5>
-          <div>UTC-05:00</div>
-        </div>
-        <div>
-          <h5>ISP</h5>
-          <div>SpaceX Starlink</div>
-        </div>
-      </div>
+      <div id="map"></div>
     </div>
-    <div class="map"></div>
   </body>
   <script src="./script.js"></script>
 </html>

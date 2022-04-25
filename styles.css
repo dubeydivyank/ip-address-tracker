@@ -1,0 +1,55 @@
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+:root {
+  --ff-rubik: "Rubik", sans-serif;
+  --clr-grey: hsl(0, 0%, 59%);
+  --clr-dark-grey: hsl(0, 0%, 17%);
+  --bg-image: url("./images/pattern-bg.png");
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body {
+  font-family: var(--ff-rubik);
+  background-image: var(--bg-image);
+  /* background-size: cover; */
+  background-repeat: no-repeat;
+}
+
+header {
+  max-height: 400px;
+}
+#map {
+  height: 300px;
+  width: 100%;
+  /* position: fixed; */
+  bottom: 0;
+}
+
+.IP-info-container {
+  height: 400px;
+  width: 400px;
+  background-color: green;
+  z-index: 1;
+}
