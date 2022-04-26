@@ -71,7 +71,6 @@ header {
 }
 
 ::placeholder {
-  /* padding-left: 20px; */
   font-size: 15px;
   color: var(--clr-grey);
   opacity: 0.7;
@@ -98,7 +97,6 @@ header {
 
 #map {
   min-height: 600px;
-  /* width: 100%; */
   top: 270px;
   bottom: 0;
   left: 0;
@@ -114,7 +112,6 @@ header {
   font-size: 10px;
   letter-spacing: 1.5px;
   text-align: center;
-  /* padding-bottom: 15px; */
 }
 
 .info-value {
@@ -128,9 +125,9 @@ header {
 /* --------------------------------- */
 @media screen and (min-width: 767px) {
   .IP-info-container {
-    margin-top: 25px;
+    margin-top: 38px;
     display: flex;
-    padding: 30px;
+    padding-left: 10px;
     align-items: center;
     justify-content: space-around;
     max-width: 1110px;
